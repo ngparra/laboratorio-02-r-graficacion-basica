@@ -96,9 +96,42 @@ barplot(
 - (25%) Casos fallecidos.
 
 ```{r}
+#Gráfico de Barras para casos activos
+barplot(height=ca_covid19$activos)
 
+#Grafico de Barras Ordenado para casos activos
+casosactivos.ordenados<-order(ca_covid19$activos, decreasing=TRUE)
+
+ca_covid19.casosactivos<-ca_covid19[casosactivos.ordenados,]
+
+barplot(height=ca_covid19.casosactivos$activos)
+
+
+barplot(
+  height=ca_covid19.casosactivos$activos, 
+  names.arg=ca_covid19.casosactivos$pais, 
+  xlab="Países", 
+  ylab="Casos Activos", 
+  main="Cantidad de Casos Activos de América Central y República Dominicana"
+)
 ```
 
 ```{r}
+#Gráfico de Barras para casos fallecidos
+barplot(height=ca_covid19$fallecidos)
 
+#Gráfico de Barras Ordenado para casos fallecidos
+cantidaddefallecidos.ordenados<- order(ca_covid19$fallecidos, decreasing=TRUE)
+
+ca_covid19.cantidaddefallecidos<- ca_covid19[cantidaddefallecidos.ordenados,]
+
+barplot(height=ca_covid19.cantidaddefallecidos$fallecidos)
+
+barplot(
+  height=ca_covid19.cantidaddefallecidos$fallecidos, 
+  names.arg=ca_covid19.cantidaddefallecidos$pais, 
+  xlab="Países", 
+  ylab="Cantidad de Fallecidos", 
+  main="Cantidad de Fallecidos de América Central y República Dominicana"
+)
 ```
