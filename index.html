@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Manuel Vargas" />
+<meta name="author" content="Nicole G. Parra Barrientos" />
 
 <meta name="date" content="2020-04-20" />
 
@@ -81,8 +81,6 @@ overflow: auto;
 margin-left: 2%;
 position: fixed;
 border: 1px solid #ccc;
-webkit-border-radius: 6px;
-moz-border-radius: 6px;
 border-radius: 6px;
 }
 
@@ -110,9 +108,14 @@ font-size: 12px;
 .tocify-subheader .tocify-subheader {
 text-indent: 30px;
 }
-
 .tocify-subheader .tocify-subheader .tocify-subheader {
 text-indent: 40px;
+}
+.tocify-subheader .tocify-subheader .tocify-subheader .tocify-subheader {
+text-indent: 50px;
+}
+.tocify-subheader .tocify-subheader .tocify-subheader .tocify-subheader .tocify-subheader {
+text-indent: 60px;
 }
 
 .tocify .tocify-item > a, .tocify .nav-list .nav-header {
@@ -516,13 +519,13 @@ float: none;
 
           item.append($("<a/>", {
 
-            "text": self.text()
+            "html": self.html()
 
           }));
 
         } else {
 
-          item.text(self.text());
+          item.html(self.html());
 
         }
 
@@ -1353,7 +1356,6 @@ code {
 }
 img {
   max-width:100%;
-  height: auto;
 }
 .tabbed-pane {
   padding-top: 12px;
@@ -1415,6 +1417,7 @@ summary {
   border: none;
   display: inline-block;
   border-radius: 4px;
+  background-color: transparent;
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
@@ -1427,48 +1430,9 @@ summary {
 }
 </style>
 
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
-});
-</script>
-
 <!-- code folding -->
 
 
-
-<script>
-$(document).ready(function ()  {
-
-    // move toc-ignore selectors from section div to header
-    $('div.section.toc-ignore')
-        .removeClass('toc-ignore')
-        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
-
-    // establish options
-    var options = {
-      selectors: "h1,h2,h3",
-      theme: "bootstrap3",
-      context: '.toc-content',
-      hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
-      },
-      ignoreSelector: ".toc-ignore",
-      scrollTo: 0
-    };
-    options.showAndHide = false;
-    options.smoothScroll = false;
-
-    // tocify
-    var toc = $("#TOC").tocify(options).data("toc-tocify");
-});
-</script>
 
 <style type="text/css">
 
@@ -1482,6 +1446,12 @@ $(document).ready(function ()  {
 }
 }
 
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
 
 .toc-content {
   padding-left: 30px;
@@ -1517,8 +1487,6 @@ div.tocify {
 
 .tocify-subheader .tocify-item {
   font-size: 0.90em;
-  padding-left: 25px;
-  text-indent: 0;
 }
 
 .tocify .list-group-item {
@@ -1561,13 +1529,13 @@ div.tocify {
 
 
 <h1 class="title toc-ignore">GF-0604 Procesamiento de datos geográficos<br>Laboratorio 02: R - Graficación básica</h1>
-<h4 class="author">Manuel Vargas</h4>
+<h4 class="author">Nicole G. Parra Barrientos</h4>
 <h4 class="date">2020-04-20</h4>
 
 </div>
 
 
-<div id="descripcion-general" class="section level2">
+<div id="descripción-general" class="section level2">
 <h2>Descripción general</h2>
 <p>En este laboratorio, aplicará varios comandos de graficación en el lenguaje <a href="https://www.r-project.org/">R</a>. Además, aprenderá a bifurcar y clonar repositorios del protocolo <a href="https://git-scm.com/">Git</a> en la plataforma <a href="https://github.com/">GitHub</a>, para editarlos en su estación de trabajo mediante <a href="https://rstudio.com/">RStudio</a>. El resultado final será un documento en la sintaxis <a href="https://rmarkdown.rstudio.com/">R Markdown</a> publicado en <a href="https://pages.github.com/">GitHub Pages</a>.</p>
 </div>
@@ -1588,11 +1556,11 @@ div.tocify {
 <h2>Trabajo previo</h2>
 <p>Se recomienda leer el material preparado por el profesor y consultar los recursos listados en <a href="https://geoprocesamiento-2020i.github.io/leccion-04-r-introduccion/">Lección 04: El lenguaje de programación R - Introducción</a>.</p>
 </div>
-<div id="bifuracion-y-clonacion-de-este-documento" class="section level2">
+<div id="bifuración-y-clonación-de-este-documento" class="section level2">
 <h2>Bifuración y clonación de este documento</h2>
 <p>Ejecute los siguientes pasos para bifurcar a su cuenta en GitHub el repositorio que contiene este documento y posteriormente clonarlo a su computadora para editarlo con RStudio:</p>
 <ol style="list-style-type: decimal">
-<li>Bifurque (<em>fork</em>) el repositorio <a href="https://github.com/geoprocesamiento-2020i/laboratorio-02-r-graficacion" class="uri">https://github.com/geoprocesamiento-2020i/laboratorio-02-r-graficacion</a> a su cuenta personal en GitHub.</li>
+<li>Bifurque (<em>fork</em>) el repositorio <a href="https://github.com/geoprocesamiento-2020i/laboratorio-02-r-graficacion">https://github.com/geoprocesamiento-2020i/laboratorio-02-r-graficacion</a> a su cuenta personal en GitHub.</li>
 <li>En el apartado <em>Settings</em> del repositorio bifurcado a su cuenta, busque la sección <em>GitHub Pages</em> y habilítela al seleccionar <em>master branch</em> como fuente. Tome nota de la dirección web resultante (ej. <a href="https://usuario.github.io/laboratorio-02-r-graficacion-basica/" class="uri">https://usuario.github.io/laboratorio-02-r-graficacion-basica/</a>).</li>
 <li>En RStudio, clone el repositorio de su cuenta personal con la opción de menú <em>File - New Project - Version Control - Git</em>. En <em>Repository URL</em> escriba la dirección de su repositorio (ej. <a href="https://github.com/usuario/laboratorio-02-r-graficacion-basica.git" class="uri">https://github.com/usuario/laboratorio-02-r-graficacion-basica.git</a>). Puede obtener esta dirección con el botón <em>Clone or download</em>, en la página principal del mismo repositorio.</li>
 <li>Abra y modifique el documento en R Studio.</li>
@@ -1607,10 +1575,10 @@ div.tocify {
 <h2>Desarrollo</h2>
 <p>Realice los siguientes ejercicios de graficación en R (el valor porcentual de cada uno se muestra entre paréntesis).</p>
 <ol style="list-style-type: decimal">
-<li>(10%) Mediante la función <code>read.csv()</code>, cargue en un data frame el archivo CSV con datos de casos de Covid-19 ubicado en <a href="https://raw.githubusercontent.com/geoprocesamiento-2020i/datos/master/covid19/casos/ca/ca-covid19.csv" class="uri">https://raw.githubusercontent.com/geoprocesamiento-2020i/datos/master/covid19/casos/ca/ca-covid19.csv</a>. Luego, despliéguelo mediante la función <code>print()</code>.</li>
+<li>(10%) Mediante la función <code>read.csv()</code>, cargue en un data frame el archivo CSV con datos de casos de Covid-19 ubicado en <a href="https://raw.githubusercontent.com/geoprocesamiento-2020i/datos/master/covid19/casos/ca/ca-covid19.csv">https://raw.githubusercontent.com/geoprocesamiento-2020i/datos/master/covid19/casos/ca/ca-covid19.csv</a>. Luego, despliéguelo mediante la función <code>print()</code>.</li>
 </ol>
 <pre class="r"><code># Importación de datos de casos recuperados, fallecidos, activos y confirmados de Covid-19 en los países de Centroamérica
-ca_covid19 &lt;- read.csv(file='https://raw.githubusercontent.com/geoprocesamiento-2020i/datos/master/covid19/casos/ca/ca-covid19.csv')
+ca_covid19 &lt;- read.csv(file=&#39;https://raw.githubusercontent.com/geoprocesamiento-2020i/datos/master/covid19/casos/ca/ca-covid19.csv&#39;)
 
 # Despliegue de los datos
 print(ca_covid19)</code></pre>
@@ -1627,7 +1595,7 @@ print(ca_covid19)</code></pre>
 <li><p>(10%) Genere un resumen de los datos con la función <code>summary()</code>.</p></li>
 <li><p>(10%) Con la función <code>barplot()</code>, genere un gráfico de barras de los casos confirmados.</p></li>
 <li><p>(10%) Con la función <code>order()</code>, ordene el data frame por cantidad de casos confirmados y genere de nuevo el gráfico.</p></li>
-<li>(10%) Incluya en el gráfico los siguientes componentes:</li>
+<li><p>(10%) Incluya en el gráfico los siguientes componentes:</p></li>
 </ol>
 <ul>
 <li>Nombres de los países en el eje correspondiente.</li>
@@ -1661,6 +1629,49 @@ $(document).ready(function () {
 });
 
 
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = false;
+    options.smoothScroll = false;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
 </script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->

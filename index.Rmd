@@ -1,6 +1,6 @@
 ---
 title: "GF-0604 Procesamiento de datos geográficos<br>Laboratorio 02: R - Graficación básica"
-author: "Manuel Vargas"
+author: "Nicole G. Parra Barrientos"
 date: "2020-04-20"
 output:
   html_document:
