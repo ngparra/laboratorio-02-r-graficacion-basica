@@ -57,13 +57,13 @@ print(ca_covid19)
 2. (10%) Genere un resumen de los datos con la función  ```summary() ```.
 
 ```{r}
-
+summary(ca_covid19)
 ```
 
 3. (10%) Con la función ```barplot()```, genere un gráfico de barras de los casos confirmados.
 
 ```{r}
-
+barplot(height=ca_covid19$confirmados)
 ```
 
 4. (10%) Con la función  ```order()```, ordene el data frame por cantidad de casos confirmados y genere de nuevo el gráfico.
