@@ -82,6 +82,7 @@ barplot(height=ca_covid19.confirmado$confirmados)
 - Titulo del gráfico.
 
 ```{r}
+
 barplot(
   height=ca_covid19.confirmado$confirmados, 
   names.arg=ca_covid19.confirmado$pais, 
@@ -96,11 +97,8 @@ barplot(
 - (25%) Casos fallecidos.
 
 ```{r}
-#Gráfico de Barras para casos activos
-barplot(height=ca_covid19$activos)
-
 #Grafico de Barras Ordenado para casos activos
-casosactivos.ordenados<-order(ca_covid19$activos, decreasing=TRUE)
+casosactivos.ordenados<-order(ca_covid19$activos, decreasing=FALSE)
 
 ca_covid19.casosactivos<-ca_covid19[casosactivos.ordenados,]
 
@@ -117,8 +115,6 @@ barplot(
 ```
 
 ```{r}
-#Gráfico de Barras para casos fallecidos
-barplot(height=ca_covid19$fallecidos)
 
 #Gráfico de Barras Ordenado para casos fallecidos
 cantidaddefallecidos.ordenados<- order(ca_covid19$fallecidos, decreasing=TRUE)
