@@ -96,9 +96,6 @@ barplot(
 - (25%) Casos fallecidos.
 
 ```{r}
-#Gráfico de Barras para casos activos
-barplot(height=ca_covid19$activos)
-
 #Grafico de Barras Ordenado para casos activos
 casosactivos.ordenados<-order(ca_covid19$activos, decreasing=TRUE)
 
@@ -117,8 +114,6 @@ barplot(
 ```
 
 ```{r}
-#Gráfico de Barras para casos fallecidos
-barplot(height=ca_covid19$fallecidos)
 
 #Gráfico de Barras Ordenado para casos fallecidos
 cantidaddefallecidos.ordenados<- order(ca_covid19$fallecidos, decreasing=FALSE)
