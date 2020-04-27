@@ -126,6 +126,7 @@ ca_covid19.cantidaddefallecidos<- ca_covid19[cantidaddefallecidos.ordenados,]
 barplot(height=ca_covid19.cantidaddefallecidos$fallecidos)
 
 #Gráfico de Barras Ordenado con titulo y nombre de ejes para los casos fallecidos
+
 barplot(
   height=ca_covid19.cantidaddefallecidos$fallecidos, 
   names.arg=ca_covid19.cantidaddefallecidos$pais, 
