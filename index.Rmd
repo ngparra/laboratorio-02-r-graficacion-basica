@@ -97,12 +97,14 @@ barplot(
 
 ```{r}
 #Grafico de Barras Ordenado para casos activos
+
 casosactivos.ordenados<-order(ca_covid19$activos, decreasing=TRUE)
 
 ca_covid19.casosactivos<-ca_covid19[casosactivos.ordenados,]
 
 barplot(height=ca_covid19.casosactivos$activos)
 
+#Gráfico de Barras Ordenado con titulo y nombre de ejes para los casos activos
 
 barplot(
   height=ca_covid19.casosactivos$activos, 
@@ -116,11 +118,14 @@ barplot(
 ```{r}
 
 #Gráfico de Barras Ordenado para casos fallecidos
+
 cantidaddefallecidos.ordenados<- order(ca_covid19$fallecidos, decreasing=TRUE)
 
 ca_covid19.cantidaddefallecidos<- ca_covid19[cantidaddefallecidos.ordenados,]
 
 barplot(height=ca_covid19.cantidaddefallecidos$fallecidos)
+
+#Gráfico de Barras Ordenado con titulo y nombre de ejes para los casos fallecidos
 
 barplot(
   height=ca_covid19.cantidaddefallecidos$fallecidos, 
