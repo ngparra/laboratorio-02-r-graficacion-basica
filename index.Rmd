@@ -116,7 +116,7 @@ barplot(
 ```{r}
 
 #Gráfico de Barras Ordenado para casos fallecidos
-cantidaddefallecidos.ordenados<- order(ca_covid19$fallecidos, decreasing=FALSE)
+cantidaddefallecidos.ordenados<- order(ca_covid19$fallecidos, decreasing=TRUE)
 
 ca_covid19.cantidaddefallecidos<- ca_covid19[cantidaddefallecidos.ordenados,]
 
